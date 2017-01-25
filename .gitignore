@@ -3,3 +3,5 @@
 target/
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
+.gradle/
+build/
