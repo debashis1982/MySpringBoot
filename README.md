@@ -1,1 +1,1 @@
-Sample Springboot project
+mvn clean && mvn install && mvn springboot:run
