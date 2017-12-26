@@ -25,7 +25,7 @@ public class HelloController {
     public String index() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
 	logger.debug("inside index of hellocontroller");
-        return "Heroku rocks again and again and again from "+location.getCountry();
+        return "Kops Kubernetes and AWS rocks!! -  from "+location.getCountry();
     }
 
 }
