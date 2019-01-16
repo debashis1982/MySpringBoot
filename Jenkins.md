@@ -4,3 +4,4 @@
 * install maven - sudo yum install maven -y
 * Prepare jenkinsfile
 * Create webhook - http://<jenkins_instance>/github-webhook
+* Install docker - sudo amazon-linux-extras install docker
