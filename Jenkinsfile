@@ -4,6 +4,7 @@ pipeline {
         stage ('Initialize') {
             steps {
                 sh '''
+                    echo "Build initialized by $(whoami)"
                     java -version
                     mvn --version
                     echo "PATH = ${PATH}"
