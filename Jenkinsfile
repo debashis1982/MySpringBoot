@@ -15,6 +15,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
+                echo 'Building docker image'
+                sh 'docker build -t myspringboot .'
             }
         }
         stage('UnitTest') {
