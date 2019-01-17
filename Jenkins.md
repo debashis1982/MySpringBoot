@@ -5,3 +5,5 @@
 * Prepare jenkinsfile
 * Create webhook - http://<jenkins_instance>/github-webhook
 * Install docker - sudo amazon-linux-extras install docker
+* Give jenkins permission to docker by adding jenkins to docker group- sudo usermod -aG docker jenkins
+* Restart jenkins - sudo service jenkins start
