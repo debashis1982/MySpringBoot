@@ -18,16 +18,14 @@ pipeline {
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
                 echo 'Building docker image'
                 sh 'docker build -t myspringboot .'
+                echo 'Tagging image'
+                sh 'docker tag myspringboot:latest 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
             }
         }
-        stage('UnitTest') {
-            steps {
-                echo 'Unit Testing..'
-            }
-        }
-        stage('FunctionalTest') {
-            steps {
-                echo 'Functional Testing..'
+        stage('DeployDockerImage') {
+            steps{
+                echo 'Pushing docker image to ECR'
+                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
             }
         }
         stage('Deploy') {
