@@ -17,6 +17,7 @@ eval $(minikube docker-env)
 ## Push image to docker registry
 ### Login to AWS ECR
 aws ecr get-login --no-include-email --region us-west-2
+(docker login -u AWS -p <password> -e none https://<aws_account_id>.dkr.ecr.<region>.amazonaws.com)
 ### Build docker image
 docker build -t myspringboot .
 ### Tag image
