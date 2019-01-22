@@ -15,6 +15,11 @@ minikube start
 eval $(minikube docker-env)
 ````
 ## Push image to docker registry
+
+## Create user to access IAM and add the following policies - 
+ * * AmazonEC2ContainerRegistryFullAccess
+ * * AmazonEC2ContainerRegistryPowerUser
+ * * AmazonEC2ContainerRegistryReadOnly
 ### Login to AWS ECR
 ```
 aws ecr get-login --no-include-email --region us-west-2
