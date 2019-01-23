@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
     stages {
         stage ('Initialize') {
             steps {
@@ -20,6 +24,8 @@ pipeline {
         }
         stage('DeployDockerImage') {
             steps{
+                echo 'AWS Configure'
+                sh 'aws configure'
                 echo 'Login to ECR'
                 sh 'aws ecr get-login --no-include-email --region us-west-2'
                 echo 'Docker Build for ECR'
