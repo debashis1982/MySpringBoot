@@ -20,10 +20,13 @@ eval $(minikube docker-env)
  * * AmazonEC2ContainerRegistryFullAccess
  * * AmazonEC2ContainerRegistryPowerUser
  * * AmazonEC2ContainerRegistryReadOnly
+### Give user access to ECR
+ * * Open ECR instance in AWS Console and give appropriate permissions to the new user
 ### Login to AWS ECR
 ```
+aws configure (Set users access key and secret access key from AWS console for that user)
 aws ecr get-login --no-include-email --region us-west-2
-(docker login -u AWS -p <password> -e none https://<aws_account_id>.dkr.ecr.<region>.amazonaws.com)
+
 ```
 ### Build docker image
 docker build -t myspringboot .
