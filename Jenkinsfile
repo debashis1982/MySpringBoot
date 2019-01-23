@@ -37,7 +37,7 @@ pipeline {
                     echo 'Docker tag image'
                     docker tag myeksecr/myspringboot:$TAG_ID 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr/myspringboot:$TAG_ID
                     echo 'Docker push'
-                    docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr/myspringboot:$TAG_ID
+                    docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr/myspringboot
                 '''
             }
         }
