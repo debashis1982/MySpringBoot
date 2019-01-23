@@ -28,13 +28,13 @@ pipeline {
                 sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
                 sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
                 echo 'Login to ECR'
-                sh 'eval $(aws ecr get-login --no-include-email --region us-west-2 | sed \'s|https://||\')'
+                sh '$(aws ecr get-login --no-include-email --region us-east-1)'
                 echo 'Docker Build for ECR'
-                sh 'docker build -t myspringboot .'
+                sh 'docker build -t myeksecr .'
                 echo 'Docker tag image'
-                sh 'docker tag myspringboot:latest 961578000206.dkr.ecr.us-east-1.amazonaws.com/myspringboot:latest'
+                sh 'docker tag myeksecr:latest 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
                 echo 'Docker push'
-                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myspringboot:latest'
+                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
             }
         }
         stage('Deploy') {
