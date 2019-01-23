@@ -33,11 +33,11 @@ pipeline {
                     echo 'Login to ECR'
                     $(aws ecr get-login --no-include-email --region us-east-1)
                     echo 'Docker Build for ECR'
-                    docker build -t myeksecr/myspringboot:$TAG_ID .
+                    docker build -t myspringboot:$TAG_ID .
                     echo 'Docker tag image'
-                    docker tag myeksecr/myspringboot:$TAG_ID 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr/myspringboot:$TAG_ID
+                    docker tag myspringboot:$TAG_ID 961578000206.dkr.ecr.us-east-1.amazonaws.com/myspringboot:$TAG_ID
                     echo 'Docker push'
-                    docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr
+                    docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myspringboot:$TAG_ID
                 '''
             }
         }
