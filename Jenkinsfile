@@ -14,18 +14,20 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building jar..'
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
-                echo 'Building docker image'
-                sh 'docker build -t myspringboot .'
-                echo 'Tagging image'
-                sh 'docker tag myspringboot:latest 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
             }
         }
         stage('DeployDockerImage') {
             steps{
-                echo 'Pushing docker image to ECR'
-                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
+                echo 'Login to ECR'
+                sh 'aws ecr get-login --no-include-email --region us-west-2'
+                echo 'Docker Build for ECR'
+                sh 'docker build -t myspringboot .'
+                echo 'Docker tag image'
+                sh 'docker tag myspringboot:latest 961578000206.dkr.ecr.us-east-1.amazonaws.com/myspringboot:latest'
+                echo 'Docker push'
+                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myspringboot:latest'
             }
         }
         stage('Deploy') {
