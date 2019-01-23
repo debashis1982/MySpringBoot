@@ -13,6 +13,7 @@ pipeline {
                     mvn --version
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
+                    export "TAG_ID"=$(git log -1 --pretty=%h)
                 ''' 
             }
         }
@@ -30,11 +31,11 @@ pipeline {
                 echo 'Login to ECR'
                 sh '$(aws ecr get-login --no-include-email --region us-east-1)'
                 echo 'Docker Build for ECR'
-                sh 'docker build -t myeksecr .'
+                sh 'docker build -t myeksecr/myspringboot:$(TAG_ID) .'
                 echo 'Docker tag image'
-                sh 'docker tag myeksecr:latest 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
+                sh 'docker tag myeksecr/myspringboot:$(TAG_ID) 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr/myspringboot:$(TAG_ID)'
                 echo 'Docker push'
-                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr:latest'
+                sh 'docker push 961578000206.dkr.ecr.us-east-1.amazonaws.com/myeksecr/myspringboot:$(TAG_ID)'
             }
         }
         stage('Deploy') {
