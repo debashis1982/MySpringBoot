@@ -6,4 +6,5 @@ variables:
   imageName: '$(projectName)'
   # define 4 more variables: tenantId, registryName, registryLogin and registryPassword in the build pipeline in UI
 steps:
+- script: mvn install
 - script: docker build -t $(registryServerName)/$(imageName):$(build.buildId) .  # add options to this command to meet your needs
