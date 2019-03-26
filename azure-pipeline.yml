@@ -1,3 +1,9 @@
 pool:
-  vmImage: 'ubuntu-16.04' # other options: 'macOS-10.13', 'vs2017-win2016'
-  - script: docker build -t $(dockerId)/$(imageName) .  # add options to this command to meet your needs
+  vmImage: 'Ubuntu 16.04'
+variables:
+  dockerId: '$(dockerId)'
+  registryServerName: '$(registryName).azurecr.io'
+  imageName: '$(projectName)'
+  # define 4 more variables: tenantId, registryName, registryLogin and registryPassword in the build pipeline in UI
+steps:
+- script: docker build -t $(registryServerName)/$(imageName):$(build.buildId) .  # add options to this command to meet your needs
