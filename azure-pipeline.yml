@@ -8,3 +8,5 @@ variables:
 steps:
 - script: mvn install
 - script: docker build -t $(registryServerName)/$(imageName):$(build.buildId) .  # add options to this command to meet your needs
+- script: docker login $(registryServerName)
+
