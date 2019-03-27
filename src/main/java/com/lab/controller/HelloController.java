@@ -25,7 +25,7 @@ public class HelloController {
     public String index() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
 	logger.debug("inside index of hellocontroller");
-        return "Kops Kubernetes and AWS rocks!! -  from "+location.getCountry();
+        return "Hi Kops Kubernetes and AWS, Azure Kubernets(AKS) -  from "+location.getCountry();
     }
 
 }
