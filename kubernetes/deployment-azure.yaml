@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
       - name: myspringboot
-        image: 961578000206.dkr.ecr.us-west-2.amazonaws.com/myspringboot:v0.0.2
+        image: #(docker_image)
         ports:
         - containerPort: 8081
