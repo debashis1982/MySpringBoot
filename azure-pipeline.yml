@@ -1,8 +1,6 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 variables:
-  containerUser: '$(containerUser)'
-  containerPwd: '$(containerPwd)'
   registryServerName: '$(registryName).azurecr.io'
   imageName: '$(projectName)'
   # define 4 more variables: tenantId, registryName, registryLogin and registryPassword in the build pipeline in UI
