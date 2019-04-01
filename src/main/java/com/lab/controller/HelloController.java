@@ -27,5 +27,11 @@ public class HelloController {
 	logger.debug("inside index of hellocontroller");
         return "Hi Kops Kubernetes and AWS, Azure Kubernets(AKS) -  from "+location.getCountry();
     }
+    @RequestMapping("/eat-cpu")
+    public String eatCPU() {
+        Logger logger = LoggerFactory.getLogger(this.getClass());
+	logger.debug("inside index of eatCPU");
+        return "Munching CPU";
+    }
 
 }
