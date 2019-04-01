@@ -31,7 +31,14 @@ public class HelloController {
     public String eatCPU() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
 	logger.debug("inside index of eatCPU");
+	int count = Runtime.getRuntime().availableProcessors();  
+        for (int i = 0; i < count; i++) {
+            new Thread(new Runnable() {
+                public void run() {
+                    while (true);
+                }
+            }).start();
+        }
         return "Munching CPU";
     }
-
 }
