@@ -39,6 +39,6 @@ public class HelloController {
                 }
             }).start();
         }
-        return "Munching CPU";
+        return "CPU count "+count;
     }
 }
